@@ -1,0 +1,75 @@
+import random
+
+char_banner = ["Nahida", "Mona", "Jean", "Tighnari", "Diluc", "Keqing", "Qiqi", "Bennett", "Razor", "Noelle", "Barbara", "Fischl", "Sucrose", "Xingqiu", "Xinyan", "Diona", "Beidou", "Xiangling", "Rosaria", "Yanfei", "Sayu", "Rainslasher", "The Flute", "Rust", "Stringless", "Widsith", "Eye of Perception", "The Bell", "Lion's Roar", "Dragon's Bane", "favonius Lance", "Favonius Sword", "Favonius Greatsword", "Favonius Codex", "Favonius Warbow", "Sacrificial Bow", "Sacrificial Sword", "Sacrificial Greatsword", "Sacrificial Fragments", "Debate Club", "Thrilling Tales", "Skyrider Sword", "Magic Guide", "Slingshot", "Sharpshooter's Oath", "Harbringer of Dawn", "Cool Steel", "Black tassel", "Bloodtainted Greatsword"]
+
+five_star_chars = ["Nahida", "Mona", "Jean", "Tighnari", "Diluc", "Keqing", "Qiqi"]
+
+four_stars = ["Bennett", "Razor", "Noelle", "Barbara", "Fischl", "Sucrose", "Xingqiu", "Xinyan", "Diona", "Beidou", "Xiangling", "Rosaria", "Yanfei", "Sayu", "Rainslasher", "The Flute", "Rust", "Stringless", "Widsith", "Eye of Perception", "The Bell", "Lion's Roar", "Dragon's Bane", "favonius Lance", "Favonius Sword", "Favonius Greatsword", "Favonius Codex", "Favonius Warbow", "Sacrificial Bow", "Sacrificial Sword", "Sacrificial Greatsword", "Sacrificial Fragments"]
+
+pity = 0
+
+four_star_pity = 0
+
+wishing = True
+
+while wishing:
+
+  print(f"\nNormal Pity: {pity}\n")
+  print(f"\nFour Star Pity: {four_star_pity}\n")
+  choice = int(input("\nDo a 1 wish or a 10 wish?"))
+
+  if choice == 1:
+    if pity < 90:
+      if four_star_pity < 10:
+        char_choice = random.choice(char_banner)
+        collection = char_choice
+        print(collection)
+
+        if collection in four_stars:
+          four_star_pity = 0
+          pity += 1
+
+        elif collection in five_star_chars:
+          four_star_pity += 1
+          pity = 0
+
+        else:
+          four_star_pity += 1 
+          pity += 1
+
+      elif four_star_pity == 10:
+        char_choice2 = random.choice(four_stars)
+        collection = char_choice2
+        print(collection)
+        pity += 1
+        four_star_pity = 0
+
+    elif pity == 90:
+      char_choice3 = random.choice(five_star_chars)
+      collection = char_choice3
+      print(collection)
+      pity = 0
+      four_star_pity += 1
+
+  if choice == 10:
+    if pity < 90:
+      if four_star_pity < 10:
+        char_choice = random.choices(char_banner, k = 10)
+        collection = char_choice
+        
+
+        for i in collection:
+          if i in four_stars:
+            four_star_pity = 0
+            pity += 1
+
+          elif i in five_star_chars:
+            four_star_pity += 1
+            pity = 0
+
+          else:
+            four_star_pity += 1 
+            pity += 1
+            
+
+        print(collection)
